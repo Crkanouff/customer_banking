@@ -12,19 +12,20 @@ def create_savings_account(balance, interest_rate, months):
         and the interest earned itself.
     """
     # Create an instance of the `Account` class and pass in the balance and interest_rate parameters.
-    savings_account = Account(balance, interest_rate)
+    savings_account = Account(balance, 0)
 
     # Calculate interest earned
-    interest = balance * (interest_rate/100* months/12)
+    interest_earned = balance * (interest_rate/100* months/12)
 
     # Update the savings account balance by adding the interest earned
-    balance += interest
+    new_balance = balance + interest_earned
+    savings_account.set_balance(new_balance)
 
     # Pass the updated_balance to the set_balance method using the instance of the Account class.
     savings_account.set_balance(balance)
 
     # Pass the interest_earned to the set_interest method using the instance of the Account class.
-    savings_account.set_interest(interest)
+    savings_account.set_interest(interest_earned)
 
     # Return the updated balance and interest earned as a tuple.
-    return balance, interest
+    return new_balance, interest_earned
